@@ -11,7 +11,6 @@ export default class ColumnChartItem extends Component {
       if (seriesIndex === seriesCount - 1) {
         lastElementMarginRight = this.props.defaultMargin;
       }
-      console.log(this.props);
       renders.push(
         <View
           key={seriesIndex}
