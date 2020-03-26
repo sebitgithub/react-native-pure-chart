@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {View, StyleSheet, TouchableWithoutFeedback} from 'react-native';
+import {View, StyleSheet, TouchableWithoutFeedback, Text} from 'react-native';
 
 export default class ColumnChartItem extends Component {
   render() {
@@ -11,12 +11,14 @@ export default class ColumnChartItem extends Component {
       if (seriesIndex === seriesCount - 1) {
         lastElementMarginRight = this.props.defaultMargin;
       }
+      console.log(this.props);
       renders.push(
         <View
           key={seriesIndex}
           style={[
             styles.bar,
             {
+              position: 'relative',
               width: this.props.defaultWidth / seriesCount,
               height: this.props.seriesArray[seriesIndex].data[
                 this.props.dataIndex
@@ -28,8 +30,26 @@ export default class ColumnChartItem extends Component {
                 : '#FFFFFF',
               borderRadius: 10,
             },
-          ]}
-        />,
+          ]}>
+          <Text
+            style={{
+              position: 'absolute',
+              top: -20,
+              left: 0,
+              right: 0,
+              textAlign: 'center',
+              fontFamily:'Montserrat-SemiBold',
+              fontSize:13
+            }}>
+            {this.props.seriesArray[seriesIndex].data[this.props.dataIndex][
+              'y'
+            ] > 0
+              ? this.props.seriesArray[seriesIndex].data[this.props.dataIndex][
+                  'y'
+                ]
+              : ''}
+          </Text>
+        </View>,
       );
     }
     return (

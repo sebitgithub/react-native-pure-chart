@@ -242,11 +242,7 @@ export const drawYAxis = (color = '#e0e0e0') => {
   return (
     <View
       style={{
-        borderRightWidth: 1,
-        borderColor: color,
-        width: 1,
         height: '100%',
-        marginRight: 0,
       }}
     />
   );
